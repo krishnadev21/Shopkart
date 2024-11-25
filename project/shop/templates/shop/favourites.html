@@ -1,0 +1,50 @@
+{% extends 'shop/layouts/main.html' %}
+
+{% block title %} Favourities {% endblock title%}
+
+{% block content %}
+<section class="bg-light py-4 my-5" style="min-height: 600px;">
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="mb-3">Favourites</h4>
+      <hr style="border-color: #b8bfc2;">
+      {% include 'shop/inc/message.html' %}
+    </div>
+  
+    <table class="table">
+      <tr>
+        <th>Image</th>
+        <th>Product Name</th>
+        <th>Unit</th>
+        <th>Remove</th>
+      </tr>
+
+      {% for item in fav_products %}
+        <tr>
+          <td><img src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}" height="75px"></td>
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.product.selling_price | stringformat:'d' }}</td>
+          <td><a href="{% url 'remove-fav' item.id %}" class="btn btn-danger btn-sm remove"><i class="fa fa-trash"></i> Remove</a></td>
+        </tr>
+      {% endfor %}
+      
+    </table>
+
+  </div>
+</div>
+</section>
+<script>
+	const removeButtons = document.querySelectorAll(".remove"); // Get all elements with the class "remove"
+  removeButtons.forEach((removeButton) => {
+    removeButton.addEventListener("click", (event) => {
+      event.preventDefault(event); // Prevent default action of the link
+  
+      confirmRemoval =  confirm("Are you sure you want to remove this item?");
+      if (confirmRemoval) {
+        location.href = removeButton.href;
+      }
+    });
+  });
+</script>
+{% endblock content %}

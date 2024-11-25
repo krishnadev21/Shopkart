@@ -1,0 +1,33 @@
+{% extends 'shop/layouts/main.html' %}
+
+{% block title %} Products {% endblock title %}
+
+{% block content %}
+  <section class="bg-light py-4 my-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-3">{{ category_name }} Products</div>
+          <hr style="border-color: #b8bfc2;">
+        </div>
+        {% for item in products %}
+          <div class="col-md-4 col-lg-3">
+            <div class="card my-3">
+              <img src="{{ item.product_image.url }}" alt="Categories" class="card-image-top" style="height: 220px;">
+              <hr style="border-color: #b8bfc2;">
+              <a href="{% url 'product-details' category_name item.name %}">
+                <div class="card-body">
+                  <h5 class="card-title text-primary">{{ item.name }}</h5>
+                  <p class="card-text">
+                    <span class="float-start old_price"><s>Rs.{{ item.original_price | stringformat:'d' }}</s></span>
+                    <span class="float-end new_price">Rs.{{ item.selling_price | stringformat:'d' }}</span>
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock content %}

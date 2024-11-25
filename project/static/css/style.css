@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+html {
+	font-size: 14px;
+}
+
+body {
+	font-family: 'Noto Sans', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+.carousel-item img  {
+	object-fit: cover;
+	object-position: center;
+	height: 60vh;
+	overflow: hidden;
+}
+
+.old_price {
+	font-weight: bold;
+	columns: red;
+}
+
+.new_price {
+	font-weight: bold;
+	color: #fff;
+	padding: 2px 4px;
+	border-radius: 4px;
+	background-color: green
+}
+
+/* Hot Trending product */
+.pic-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	background-color: #fff;
+}
+
+.pic-box .hot {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 50px;
+	text-align: center;
+	font-weight: bold;
+	padding: 2px 6px;
+	border-radius: 4px;
+	color: #fff;
+	background-color: red;
+}
+
+.product-container {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-content {
+	display: flex;
+  flex-direction: column;
+	justify-content: center;
+	align-items: start;
+	position: relative;
+}
+
+@media (max-width: 1000px) {
+  .product-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
